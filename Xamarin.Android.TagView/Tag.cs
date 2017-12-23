@@ -1,4 +1,5 @@
 using System;
+using Android.Graphics;
 using Android.Graphics.Drawables;
 
 namespace com.cunoraz.tagview
@@ -20,6 +21,7 @@ namespace com.cunoraz.tagview
         public float layoutBorderSize;
         public int layoutBorderColor;
         public Drawable background;
+        public Typeface typeFace;
 
 
         public Tag(String text)
