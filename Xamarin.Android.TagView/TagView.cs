@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
@@ -54,7 +54,7 @@ namespace com.cunoraz.tagview
             Initialize(ctx, null, 0);
         }
 
-        public TagView(Context ctx, IAttributeSet attrs) : base(ctx,attrs)
+        public TagView(Context ctx, IAttributeSet attrs) : base(ctx, attrs)
         {
             Initialize(ctx, attrs, 0);
         }
@@ -183,7 +183,9 @@ namespace com.cunoraz.tagview
                 parametros.SetMargins(textPaddingLeft, textPaddingTop, textPaddingRight, textPaddingBottom);
                 tagView.LayoutParameters = parametros;
                 tagView.SetTextColor(ColorStateList.ValueOf(new Color(tag.tagTextColor)));
-                tagView.SetTextSize(ComplexUnitType.Sp, tag.tagTextSize);
+                tagView.SetTextSize(ComplexUnitType.Dip, tag.tagTextSize);
+                if (tag.typeFace != null)
+                    tagView.SetTypeface(tag.typeFace, TypefaceStyle.Normal);
 
                 tagLayout.Click += delegate
                 {
@@ -211,7 +213,7 @@ namespace com.cunoraz.tagview
                     int offset = Utils.DipToPx(Application.Context, 2f);
                     deletableView.SetPadding(offset, textPaddingTop, textPaddingRight + offset, textPaddingBottom);
                     deletableView.SetTextColor(ColorStateList.ValueOf(new Color(tag.deleteIndicatorColor)));
-                    deletableView.SetTextSize(ComplexUnitType.Sp, tag.deleteIndicatorSize);
+                    deletableView.SetTextSize(ComplexUnitType.Dip, tag.deleteIndicatorSize);
                     deletableView.Click += delegate
                     {
                         if (mDeleteListener != null)
